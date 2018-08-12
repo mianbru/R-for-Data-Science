@@ -36,3 +36,43 @@
 	*The stroke aesthetic modifies the width of the shape's border.
 "1.6) What happens if you map an aesthetic to something other than a variable name, like aes(color = displ < 5)?
 	*If you map an aesthetic to a conditional statement, the data will be colored on a true false basis.
+	
+------------------------------------------------Exercise 3------------------------------------------------
+
+"1.1) What happens if you facet on a continuous variable?"
+
+	*It converts the continuous variable to a factor and creates facets for all unique values of it.
+
+"1.2) What do the empty cells in a plot with facet_grid(drv ~ cyl) mean? How do they realate to this plot?
+	ggplot(data = mpg) + geom_point(mapping = aes(x = drv, y = cyl))"
+	
+	*The empty cells in the plot indicate that there is no data for that combination of drv and cyl.
+	
+"1.3) What plots does the following code make? What does . do?
+	ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(drv ~ .)
+	
+	ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(. ~ cyl)"
+	
+	*The plots show the relationship of displ and hwy faceted by drv and displ and hwy faceted by cyl.
+	The . ignores that dimension for faceting.
+
+"1.4) Take the first faceted plot in this section:
+	ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
+	
+	What are the advantages to using faceting instead of the color aesthetic? What are the disadvantages?
+	How might the balance change if you had a larger dataset?
+	
+	*faceting makes it easier to look at the relationship of hwy and displ for each individual class of car better than 
+	the color aesthetic. The disadvantage is it is more difficult to compare the full dataset. If you have more data the colors
+	in aesthetic become more similar and harder to distinguish.
+	
+"1.5) Read ?facet_wrap. What does nrow do? What does ncol do? What other options control the layout of the individual panels?
+Why doesn't facet_grid() have nrow and ncol variables?"
+
+	*nrow indicates the number of rows and ncol indicates the number of columns. Scales, Shrink and labeller are just some
+	the other options controls for the facet_wrap layout. Because the number of rows and columns are determined by specified values.
+
+"1.6) When using facet_grid() you should usually put the variable with more unique levels in the columns. Why?"
+	
+	*you should put the variable with more unique levels in the columns because it is easier to compare variables horizontally
+	rather than vertically.
